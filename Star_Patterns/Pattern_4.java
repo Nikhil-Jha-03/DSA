@@ -1,5 +1,3 @@
-package Star_Patterns;
-
 public class Pattern_4 {
     public static void main(String[] args) {
         int num = 4;
