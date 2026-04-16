@@ -5,6 +5,7 @@ public class Pattern_7 {
         int stars = 0;
         int spaces = 0;
 
+
         for (int i = 1; i <= num; i++) {
             spaces = num - i;
             stars = 2 * i - 1;

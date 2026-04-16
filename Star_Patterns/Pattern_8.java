@@ -5,16 +5,22 @@ public class Pattern_8 {
         int stars = 0;
         int spaces = 0;
 
-        for (int i = 1; i <= num; i++) {
-            spaces = num - i;
-            stars = i;
+        for (int i = 0; i < num; i++) {
 
-            for (int j = 1; j <= spaces; j++) {
+            spaces = i;
+            stars = ( 2 * num ) - ( (2 * i )+ 1 );
+                
+
+            for (int j = 0; j < spaces; j++) {
                 System.out.print(" ");
             }
 
             for (int k = 0; k < stars; k++) {
-                System.out.print("* ");
+                System.out.print("*");
+            }
+
+            for (int k = 0; k < spaces; k++) {
+                System.out.print(" ");
             }
             System.out.println();
         }
