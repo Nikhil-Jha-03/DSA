@@ -8,9 +8,8 @@ public class Pattern_8 {
         for (int i = 0; i < num; i++) {
 
             spaces = i;
-            stars = ( 2 * num ) - ( (2 * i )+ 1 );
+            stars = ( 2 * num ) - ( (2 * i ) + 1 );
                 
-
             for (int j = 0; j < spaces; j++) {
                 System.out.print(" ");
             }
@@ -27,3 +26,8 @@ public class Pattern_8 {
 
     }
 }
+// *********
+//  *******
+//   *****
+//    ***
+//     *
