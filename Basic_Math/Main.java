@@ -35,26 +35,89 @@ public class Main {
     }
 
     static void reverseNumber() {
-        int num = 1234;
+
+        // 7. Reverse Integer
+
+        // Given a signed 32-bit integer x, return x with its digits reversed. If
+        // reversing x causes the value to go outside the signed 32-bit integer range
+        // [-231, 231 - 1], then return 0.
+
+        // Assume the environment does not allow you to store 64-bit integers (signed or
+        // unsigned).
+
+        // Example 1:
+
+        // Input: x = 123
+        // Output: 321
+        // Example 2:
+
+        // Input: x = -123
+        // Output: -321
+        // Example 3:
+
+        // Input: x = 120
+        // Output: 21
+
+        // Constraints:
+
+        // -231 <= x <= 231 - 1
+
+        int num = -1234;
         int reverseNumber = 0;
-        while (num > 0) {
+
+        while (num != 0) {
             // System.out.println(num);
-            int  digit = num%10;
-            // System.out.println(digit);
-            
-            reverseNumber = (reverseNumber * 10 ) + digit;
 
+            int digit = num % 10;
 
-            num = num/10;
+            if (reverseNumber > (Integer.MAX_VALUE) / 10 ||
+                    reverseNumber < (Integer.MIN_VALUE) / 10) {
+
+                System.out.println("Out Of Bound");
+                return; // STOP here
+            }
+
+            reverseNumber = (reverseNumber * 10) + digit;
+
+            num = num / 10;
         }
 
+        // return (num < absNum) ? reverseNumber : (-reverseNumber);
         System.out.println(reverseNumber);
+
+    }
+
+    static void checkNumberPalindrome() {
+        int x = 121;
+        int original = x;
+        int reversed = 0;
+
+        if (x < 0) {
+            System.out.println("False");
+            // return false;
+            return;
+        }
+
+        while (x != 0) {
+            int digit = x%10;
+
+            reversed = (reversed * 10) + digit;
+            x = x/10;
+        }
+
+        if (original == reversed) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
 
     }
 
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
         // countAllDigitsOfANumber(); count the lenght of the number
-        reverseNumber();
+        // reverseNumber();
+        checkNumberPalindrome();
+
     }
 }
