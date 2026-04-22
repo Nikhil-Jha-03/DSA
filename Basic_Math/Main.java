@@ -99,10 +99,10 @@ public class Main {
         }
 
         while (x != 0) {
-            int digit = x%10;
+            int digit = x % 10;
 
             reversed = (reversed * 10) + digit;
-            x = x/10;
+            x = x / 10;
         }
 
         if (original == reversed) {
@@ -113,11 +113,39 @@ public class Main {
 
     }
 
+    static void isArmstrongNumber() {
+        int x = 9474;
+        int num = x;
+        int result = 0;
+        // int count = String.valueOf(x).length();  // can also do something like this 
+
+        int count = 0;
+        while (num != 0) {
+            count++;
+            num = num / 10;
+        }
+
+        num = x;
+
+        while (num != 0) {
+            int digit = num % 10;
+            result += Math.pow(digit, count);
+            num = num / 10;
+        }
+
+        if (x == result) {
+            System.out.println("Is ArmStrong");
+        } else {
+            System.out.println("Not ArmStrong");
+        }
+    }
+
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
         // countAllDigitsOfANumber(); count the lenght of the number
         // reverseNumber();
-        checkNumberPalindrome();
+        // checkNumberPalindrome();
+        isArmstrongNumber();
 
     }
 }
