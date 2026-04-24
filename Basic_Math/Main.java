@@ -176,7 +176,28 @@ public class Main {
 
     }
 
-    static void checkForPrimeNumber() {}
+    static void checkForPrimeNumber() {
+        int num = 14;
+        int count = 0;
+
+        for (int i = 1; i < Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                count++;
+                if (num % i != i) {
+                    count++;
+                }
+            }
+
+            
+        }
+
+        if (count == 2) {
+            System.out.println("Is Prime");
+        } else {
+            System.out.println("Not Prime");
+        }
+
+    }
 
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
@@ -184,6 +205,7 @@ public class Main {
         // reverseNumber();
         // checkNumberPalindrome();
         // isArmstrongNumber();
-        printAllDivisorsOfGivenNumber();
+        // printAllDivisorsOfGivenNumber();
+        // checkForPrimeNumber();
     }
 }
