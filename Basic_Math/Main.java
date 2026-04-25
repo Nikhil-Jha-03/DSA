@@ -199,6 +199,28 @@ public class Main {
 
     }
 
+    static void gcd(){
+        int a = 20;
+        int b = 40;
+
+        while(a > 0 && b > 0){
+            if (a>b) {
+                a = a%b;
+            } else {
+                b = b%a;
+            }
+        }
+
+        if (a == 0) {
+            System.out.print(b);
+        }
+
+        System.err.println(a);
+        
+    }
+
+
+
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
         // countAllDigitsOfANumber(); count the lenght of the number
@@ -207,5 +229,6 @@ public class Main {
         // isArmstrongNumber();
         // printAllDivisorsOfGivenNumber();
         // checkForPrimeNumber();
+        gcd();
     }
 }
