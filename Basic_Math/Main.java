@@ -162,7 +162,7 @@ public class Main {
         for (int i = 1; i <= Math.sqrt(num); i++) {
             System.out.println(i);
             if (num % i == 0) {
-                // arr.add(i);
+                arr.add(i);
                 if (num / i != i) {
                     System.out.println(num / i);
                     arr.add(num / i);
@@ -188,7 +188,6 @@ public class Main {
                 }
             }
 
-            
         }
 
         if (count == 2) {
@@ -199,27 +198,30 @@ public class Main {
 
     }
 
-    static void gcd(){
+    // Greatest common divisor
+    static void gcd() {
+        // Using euclidean algorithm
+        // Time complexity is O(log(phi) (min(a,b)))
         int a = 20;
         int b = 40;
 
-        while(a > 0 && b > 0){
-            if (a>b) {
-                a = a%b;
+        while (a > 0 && b > 0) {
+            if (a > b) {
+                a = a % b;
             } else {
-                b = b%a;
+                b = b % a;
             }
         }
 
         if (a == 0) {
+            // return b;
             System.out.print(b);
         }
 
+        // return a;
         System.err.println(a);
-        
+
     }
-
-
 
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
@@ -229,6 +231,6 @@ public class Main {
         // isArmstrongNumber();
         // printAllDivisorsOfGivenNumber();
         // checkForPrimeNumber();
-        gcd();
+        // gcd();
     }
 }
