@@ -56,7 +56,36 @@ public class Main {
         System.out.println(n);
     }
 
-   
+    int sumOfFirstNNumbers(int count, int n, int sum) {
+
+        // For Functional Recurion we use int as return instead of void
+
+        // With Backtracking and parameterized recursion
+        // if (n < 1) {
+        // System.out.println(sum);
+        // return;
+        // }
+        // sumOfFirstNNumbers(count, n - 1, sum+n);
+
+        // Without BackTracking and parameterized recursion
+        // if (count >= n) {
+        // System.out.println(sum);
+        // return;
+        // }
+        // count++;
+        // sum = sum + count;
+        // sumOfFirstNNumbers(count, n, sum);
+
+        // Using Functional Recurion
+        // only n is required
+        if (n == 0) {
+            return 0;
+        }
+
+        return n + sumOfFirstNNumbers(count, n - 1, sum);
+
+    }
+
     public static void main(String[] args) {
         Main mn = new Main();
         // mn.printNumberNtimes(0);
@@ -65,7 +94,8 @@ public class Main {
         // mn.printNto1(5);
         // mn.print1ToNBacktracking(5);
         // mn.printNto1Backtracking(5,1);
-       
+        int result = mn.sumOfFirstNNumbers(0, 5, 0);
+        System.out.println(result);
     }
 
 }
