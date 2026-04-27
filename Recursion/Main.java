@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     void printNumberNtimes(int num) {
@@ -86,6 +89,42 @@ public class Main {
 
     }
 
+    int factorialOfN(int n) {
+        // Time and Space Complexity = O(N)
+        if (n == 0) {
+            return 1;
+        }
+
+        return n * factorialOfN(n - 1);
+    }
+
+    // Method 1
+    // int[] reverseAnArrayM1(int left, int right, int arr[]) {
+    //     if (left > right) {
+    //         return arr;
+    //     }
+    //     int temp = arr[left];
+    //     arr[left] = arr[right];
+    //     arr[right] = temp;
+    //     reverseAnArray(left + 1, right - 1, arr);
+    //     return arr;
+    // }
+
+    int[] reverseAnArrayM2(int i, int n, int arr[]) {
+        // System.out.println(arr);
+        if (i > n/2) {
+            return arr;
+        }
+
+        int temp = arr[i];
+        arr[i] = arr[n - i - 1];
+        arr[n - i - 1] = temp;
+
+        reverseAnArrayM2(i + 1, n, arr);
+
+        return arr;
+    }
+
     public static void main(String[] args) {
         Main mn = new Main();
         // mn.printNumberNtimes(0);
@@ -94,8 +133,15 @@ public class Main {
         // mn.printNto1(5);
         // mn.print1ToNBacktracking(5);
         // mn.printNto1Backtracking(5,1);
-        int result = mn.sumOfFirstNNumbers(0, 5, 0);
-        System.out.println(result);
+        // int result = mn.sumOfFirstNNumbers(0, 5, 0);
+        // int result = mn.factorialOfN(5);
+        int arr[] = { 2, 3, 4, 6, 8 };
+        // int result[] = mn.reverseAnArrayM1(0, arr.length - 1, arr);
+        int result[] = mn.reverseAnArrayM2(0, arr.length, arr);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+        }
+        // System.out.println(result);
     }
 
 }
