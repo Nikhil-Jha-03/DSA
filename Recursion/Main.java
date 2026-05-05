@@ -153,25 +153,23 @@ public class Main {
         // string.length() - (2*i) -1 or something work
     }
 
-   
     boolean checkStringPalindromeUsingTwoPointer125(String text) {
 
-    //      boolean checkStringPalindromeWithAscii(String text) {
-    //     String newText = "";
-    //     for (int i = 0; i < text.length(); i++) {
-    //         if ((int) text.charAt(i) >= (int) 'A' && (int) text.charAt(i) <= (int) 'z') {
-    //             newText = newText + text.charAt(i);
-    //         }
-    //     }
-    //     newText = newText.toLowerCase();
-    //     for (int j = 0; j < newText.length(); j++) {
-    //         if (newText.charAt(j) != newText.charAt(newText.length() - j - 1)) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
-
+        // boolean checkStringPalindromeWithAscii(String text) {
+        // String newText = "";
+        // for (int i = 0; i < text.length(); i++) {
+        // if ((int) text.charAt(i) >= (int) 'A' && (int) text.charAt(i) <= (int) 'z') {
+        // newText = newText + text.charAt(i);
+        // }
+        // }
+        // newText = newText.toLowerCase();
+        // for (int j = 0; j < newText.length(); j++) {
+        // if (newText.charAt(j) != newText.charAt(newText.length() - j - 1)) {
+        // return false;
+        // }
+        // }
+        // return true;
+        // }
 
         int left = 0;
         int right = text.length() - 1;
@@ -195,6 +193,62 @@ public class Main {
         return true;
     }
 
+    int fibonacciSeriesTillNTermRecursive(int num) {
+
+        if (num <= 1) {
+            return num;
+        }
+
+        int last = fibonacciSeriesTillNTermRecursive(num - 1);
+        int slast = fibonacciSeriesTillNTermRecursive(num - 2);
+
+        // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+
+        return last + slast;
+    }
+
+    int fibonacciSeriesTillNTermLoop(int num) {
+        int secondLast = 0; // ( n-2 )
+        int last = 1; // ( n-1 )
+        int curr;
+        if (num <= 1) {
+            return num;
+        }
+
+        for (int i = 2; i < num; i++) {
+            curr = last + secondLast;
+            secondLast = last;
+            last = curr;
+        }
+        return last + secondLast;
+    }
+
+    boolean isSameAfterReversals(int num) {
+        int reverse1 = reverse(num);
+        int r2 = reverse(reverse1);
+        int r3 = reverse(r2);
+
+        if (r2 != num) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public int reverse(int z) {
+
+        int newNum = 0;
+        while (z > 0) {
+            int digit = z % 10;
+            if (z % 10 == 0 && z % 100 == 0) {
+                z = z / 10;
+            }
+            newNum = (newNum * 10) + digit;
+            z = z / 10;
+        }
+        return newNum;
+    }
+
     public static void main(String[] args) {
         Main mn = new Main();
         // mn.printNumberNtimes(0);
@@ -215,10 +269,14 @@ public class Main {
         // String result = mn.stringPalindrome("madam");
         // boolean result = mn.stringPalindrome(0, "madam");
 
-        boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a canal: Panama");
+        // boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a
+        // canal: Panama");
+        // int result = mn.fibonacciSeriesTillNTermRecursive(15);
+        // int result = mn.fibonacciSeriesTillNTermLoop(5);
+        boolean result = mn.isSameAfterReversals(1800);
+
         System.out.println(result);
 
-        // System.out.println(result);
     }
 
 }
