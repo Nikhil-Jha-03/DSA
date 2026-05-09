@@ -223,6 +223,34 @@ public class Main {
 
     }
 
+
+    boolean isSameAfterReversals(int num) {
+        int reverse1 = reverse(num);
+        int r2 = reverse(reverse1);
+        int r3 = reverse(r2);
+
+        if (r2 != num) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public int reverse(int z) {
+
+        int newNum = 0;
+        while (z > 0) {
+            int digit = z % 10;
+            if (z % 10 == 0 && z % 100 == 0) {
+                z = z / 10;
+            }
+            newNum = (newNum * 10) + digit;
+            z = z / 10;
+        }
+        return newNum;
+    }
+
+
     public static void main(String[] args) {
         // extractNumber(); extract and remove number
         // countAllDigitsOfANumber(); count the lenght of the number

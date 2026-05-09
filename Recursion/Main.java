@@ -223,31 +223,6 @@ public class Main {
         return last + secondLast;
     }
 
-    boolean isSameAfterReversals(int num) {
-        int reverse1 = reverse(num);
-        int r2 = reverse(reverse1);
-        int r3 = reverse(r2);
-
-        if (r2 != num) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public int reverse(int z) {
-
-        int newNum = 0;
-        while (z > 0) {
-            int digit = z % 10;
-            if (z % 10 == 0 && z % 100 == 0) {
-                z = z / 10;
-            }
-            newNum = (newNum * 10) + digit;
-            z = z / 10;
-        }
-        return newNum;
-    }
 
     public static void main(String[] args) {
         Main mn = new Main();
@@ -272,8 +247,7 @@ public class Main {
         // boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a
         // canal: Panama");
         // int result = mn.fibonacciSeriesTillNTermRecursive(15);
-        // int result = mn.fibonacciSeriesTillNTermLoop(5);
-        boolean result = mn.isSameAfterReversals(1800);
+        int result = mn.fibonacciSeriesTillNTermLoop(5);
 
         System.out.println(result);
 
