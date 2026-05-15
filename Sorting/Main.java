@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     static void selectionSort(int[] arr) {
@@ -43,10 +46,102 @@ public class Main {
         }
     }
 
+    static void insertionSort(int[] arr) {
+
+        // Self
+        // unoptimized best case is still O(n)
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i; j > 0; j--) {
+                System.out.println("RUNS");
+                if (arr[j] < arr[j - 1]) {
+                    int temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                    // System.out.println("RUNS");
+                }
+            }
+        }
+
+        // Striver's
+        // More Optimized Best Case O(n)
+        // for (int i = 1; i < arr.length - 1; i++) {
+        // int j = i;
+        // while (j > 0 && arr[j - 1] > arr[j]) {
+        // int temp = arr[j - 1];
+        // arr[j - 1] = arr[j];
+        // arr[j] = temp;
+        // j--;
+        // }
+
+        // }
+
+        for (int ar : arr) {
+            System.out.print(ar + " ");
+        }
+    }
+
+    static void mergeArray(int[] arr, int low, int mid, int high) {
+
+        List<Integer> temp = new ArrayList<>();
+
+        // for first Array -> left Side Array Merging
+        int left = low;
+        int right = mid + 1;
+
+        while (left <= mid && right <= high) {
+            if (arr[left] <= arr[right]) {
+                temp.add(arr[left]);
+                left++;
+            } else {
+                temp.add(arr[right]);
+                right++;
+            }
+        }
+
+        while (left <= mid) {
+            temp.add(arr[left]);
+            left++;
+        }
+
+        while (right <= high) {
+            temp.add(arr[right]);
+            right++;
+        }
+
+        for (int i = low; i <= high; i++) {
+            arr[i] = temp.get(i - low);
+        }
+
+
+        for(int a : arr){
+            System.out.print( a + " ");
+        }
+        
+
+    }
+
+    static void mergeSort(int[] arr, int low, int high) {
+
+        if (low == high) {
+            return;
+        }
+
+        int mid = (low + high) / 2;
+        
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+        mergeArray(arr, low, mid, high);
+    }
+
     public static void main(String[] args) {
-        int arr[] = { 13, 46, 24, 52, 20, 9 };
+        // int arr[] = { 13, 46, 24, 52, 20, 9 };
+        // int arr[] = { 9, 14, 15, 12, 6, 8, 13 };
+        // int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
         // selectionSort(arr);
-        bubbleSort(arr);
+        // bubbleSort(arr);
+        // insertionSort(arr);
+        int arr[] = { 3, 1, 2, 4, 1, 5, 2, 6, 4 };
+        mergeSort(arr, 0, arr.length - 1);
     }
 
 }
