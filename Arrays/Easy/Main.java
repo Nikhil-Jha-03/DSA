@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Main {
 
     // Maximum lenght of array we can store is 10^6 for locally defined array and
@@ -120,7 +125,7 @@ public class Main {
             // }
 
             if (arr[i] > arr[i + 1]) {
-                System.out.println("unsorter");
+                System.out.println("unsorted");
                 return false;
             }
         }
@@ -132,7 +137,7 @@ public class Main {
         int[] arr = { 3, 4, 5, 1, 2 };
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >  arr[(i+1)%arr.length]) {
+            if (arr[i] > arr[(i + 1) % arr.length]) {
                 count++;
                 if (count > 1) {
                     return false;
@@ -142,14 +147,59 @@ public class Main {
 
         return true;
 
+    }
 
+    // We will use pointer pattern
+    static boolean removeDuplicateFromArray() {
+        int[] arr = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 
+        // set operation (here insert) use log n time complexity
+        // for this brute force time complexity is O(n log n + n) space = O(n)
+        // Set<Integer> st = new HashSet<>();
+        // for (int i = 0; i < arr.length; i++) {
+        // st.add(arr[i]);
+        // }
+
+        // int index = 0;
+
+        // for (int s : st) {
+        // arr[index] = s;
+        // index++;
+        // }
+
+        // for (int i = 0; i < arr.length; i++) {
+        // System.out.print(arr[i] + " ");
+
+        // Optimal Approach 
+        // Time Complexity O(n)
+        int ptr1 = 0;
+        int ptr2 = 1;
+
+        while (ptr2 < arr.length) {
+
+            if (arr[ptr2] != arr[ptr1]) {
+                arr[ptr1 + 1] = arr[ptr2];
+                ptr1++;
+            }
+
+            ptr2++;
+        }
+
+        System.out.println("Index : " + (ptr1 + 1));
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
         // largestElementInAnArray();
         // secondLargestElementInAnArray();
         // secondSmallestElementInAnArray();
-        checkIfAnArrayIsSorted();
+        // checkIfAnArrayIsSorted();
+        removeDuplicateFromArray();
     }
 }
