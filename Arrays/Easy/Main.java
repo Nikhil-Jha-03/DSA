@@ -170,23 +170,37 @@ public class Main {
         // for (int i = 0; i < arr.length; i++) {
         // System.out.print(arr[i] + " ");
 
-        // Optimal Approach 
+        // Optimal Approach
         // Time Complexity O(n)
-        int ptr1 = 0;
-        int ptr2 = 1;
+        // int ptr1 = 0;
+        // int ptr2 = 1;
 
-        while (ptr2 < arr.length) {
+        // while (ptr2 < arr.length) {
 
-            if (arr[ptr2] != arr[ptr1]) {
-                arr[ptr1 + 1] = arr[ptr2];
-                ptr1++;
+        // if (arr[ptr2] != arr[ptr1]) {
+        // arr[ptr1 + 1] = arr[ptr2];
+        // ptr1++;
+        // }
+
+        // ptr2++;
+        // }
+
+        // System.out.println("Index : " + (ptr1 + 1));
+
+        // for (int i = 0; i < arr.length; i++) {
+        // System.out.print(arr[i]);
+
+        // }
+
+        // or using just one ptr
+        int a = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[a] != arr[i]) {
+                a++;
+                arr[a] = arr[i];
             }
-
-            ptr2++;
         }
-
-        System.out.println("Index : " + (ptr1 + 1));
-
+        System.out.println("Index : " + (a + 1));
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
 
@@ -195,11 +209,90 @@ public class Main {
         return false;
     }
 
+    static void rotateArray() {
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
+        int k = 3;
+
+        // Brute Force Apprach time = O(n^2) space =O(n)
+        // List<Integer> arr = new ArrayList<>();
+        // for (int i = k+1; i < nums.length; i++) {
+        // arr.add(nums[i]);
+        // }
+        // for (int i = 0; i <= k; i++) {
+        // arr.add(nums[i]);
+        // }
+        // for(int a : arr){
+        // System.out.print(a+" ");
+        // }
+
+        // better Apprach
+        int[] temp = new int[nums.length];
+        for (int j = 0; j < k; j++) {
+            for (int i = 1; i < nums.length; i++) {
+                temp[i - 1] = nums[i];
+            }
+
+            temp[nums.length - 1] = nums[0];
+
+        }
+
+    }
+
+    static void leftRotateByOne() {
+        // time complixity O(n) space use to solve is O(n) (as changes is done in the same array) extra space O(1)
+        int[] nums = { 1, 2, 3, 4, 5 };
+
+        int temp = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            // swap
+
+            nums[i - 1] = nums[i];
+
+        }
+        nums[nums.length - 1] = temp;
+
+        for (int i = 0; i < nums.length; i++) {
+            // 3
+
+            System.out.print(nums[i]);
+
+        }
+
+    }
+
+    static void leftRotateByD() {
+        // time complixity O(n) space use to solve is O(n) (as changes is done in the same array) extra space O(1)
+        int[] nums = { 1, 2, 3, 4, 5 };
+        int d = 3 % nums.length;
+
+        for (int i = 0; i < d; i++) {
+            int temp = nums[0];
+            for (int j = 1; j < nums.length; j++) {
+                nums[j-1] = nums[j];
+            }
+
+            nums[nums.length-1] = temp;
+
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i]);
+        }
+
+ 
+
+
+    }
+
+
     public static void main(String[] args) {
         // largestElementInAnArray();
         // secondLargestElementInAnArray();
         // secondSmallestElementInAnArray();
         // checkIfAnArrayIsSorted();
-        removeDuplicateFromArray();
+        // removeDuplicateFromArray();
+        // rotateArray();
+        // leftRotateByOne();
+        leftRotateByD();
     }
 }
