@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class Main {
 
@@ -211,7 +210,7 @@ public class Main {
 
     static void rotateArray() {
         int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
-        int k = 3;
+        int d = 3 % nums.length;
 
         // Brute Force Apprach time = O(n^2) space =O(n)
         // List<Integer> arr = new ArrayList<>();
@@ -226,20 +225,19 @@ public class Main {
         // }
 
         // better Apprach
-        int[] temp = new int[nums.length];
-        for (int j = 0; j < k; j++) {
-            for (int i = 1; i < nums.length; i++) {
-                temp[i - 1] = nums[i];
-            }
-
-            temp[nums.length - 1] = nums[0];
-
+        // O(n)
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, d - 1);
+        reverse(nums, d, nums.length - 1);
+        for (int a : nums) {
+            System.out.print(a + " ");
         }
 
     }
 
     static void leftRotateByOne() {
-        // time complixity O(n) space use to solve is O(n) (as changes is done in the same array) extra space O(1)
+        // time complixity O(n) space use to solve is O(n) (as changes is done in the
+        // same array) extra space O(1)
         int[] nums = { 1, 2, 3, 4, 5 };
 
         int temp = nums[0];
@@ -260,30 +258,120 @@ public class Main {
 
     }
 
+    static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
     static void leftRotateByD() {
-        // time complixity O(n) space use to solve is O(n) (as changes is done in the same array) extra space O(1)
-        int[] nums = { 1, 2, 3, 4, 5 };
+        // time complixity O(n) space use to solve is O(n) (as changes is done in the
+        // same array) extra space O(1)
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
         int d = 3 % nums.length;
 
-        for (int i = 0; i < d; i++) {
-            int temp = nums[0];
-            for (int j = 1; j < nums.length; j++) {
-                nums[j-1] = nums[j];
-            }
+        // for (int i = 0; i < d; i++) {
+        // int temp = nums[0];
+        // for (int j = 1; j < nums.length; j++) {
+        // nums[j-1] = nums[j];
+        // }
+        // nums[nums.length-1] = temp;
+        // }
+        // for (int i = 0; i < nums.length; i++) {
+        // System.out.print(nums[i]);
+        // }
 
-            nums[nums.length-1] = temp;
+        reverse(nums, 0, d - 1);
 
-        }
+        reverse(nums, d, nums.length - 1);
+
+        reverse(nums, 0, nums.length - 1);
 
         for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i]);
+            System.out.print(nums[i] + "  ");
         }
-
- 
-
 
     }
 
+    static void rotateZeros() {
+        int[] nums = { 0, 1, 0, 3, 12 };
+
+        // Brute Force
+        // Time O(n)
+        // Space O(n)
+
+        // List<Integer> arr = new ArrayList<>();
+        // int zeroCounter = 0;
+        // for (int i = 0; i < nums.length; i++) {
+        // if (nums[i] == 0) {
+        // zeroCounter++;
+        // } else {
+        // arr.add(nums[i]);
+        // }
+        // }
+        // while (zeroCounter-- > 0) {
+        // arr.add(0);
+        // }
+        // for(int a : arr){
+        // System.out.print(a);
+        // }
+
+        // Optimal
+        // TwoPointer
+        // int left = 0;
+        // int right = 0;
+        // while (left < nums.length-2) {
+        // if (nums[left] == 0) {
+        // if (nums[right] != 0) {
+        // int temp = nums[right];
+        // nums[right] = nums[left];
+        // nums[left] = temp;
+        // left++;
+        // } else {
+        // if (right < nums.length) {
+        // right++;
+        // }
+        // }
+        // } else {
+        // left++;
+        // right++;
+        // }
+        // }
+
+        // for (int a : nums) {
+        // System.out.print(a);
+        // }
+
+        int j = -1;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                j = i;
+                break;
+            }
+        }
+
+        if (j == -1)
+            return;
+
+        for (int i = j + 1; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+
+        for (int a : nums) {
+            System.out.print(a);
+        }
+
+    }
 
     public static void main(String[] args) {
         // largestElementInAnArray();
@@ -293,6 +381,7 @@ public class Main {
         // removeDuplicateFromArray();
         // rotateArray();
         // leftRotateByOne();
-        leftRotateByD();
+        // leftRotateByD();
+        rotateZeros();
     }
 }
