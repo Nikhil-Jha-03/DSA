@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -377,33 +379,49 @@ public class Main {
         // int[] nums = { 0, 1, 0, 3, 12 };
         int[] nums = { 1, 2, 2, 1, 1, 0 };
 
-         for(int i = 0; i< nums.length-1 ; i++ ){
-            if(nums[i] == nums[i+1]){
-                int temp = nums[i+1];
-                nums[i+1] = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                int temp = nums[i + 1];
+                nums[i + 1] = 0;
                 nums[i] = temp * 2;
             }
         }
 
         int ptr = 0;
 
-        while(ptr < nums.length){
-            if(nums[ptr] == 0){
+        while (ptr < nums.length) {
+            if (nums[ptr] == 0) {
                 break;
             }
-                ptr++;
+            ptr++;
         }
-        
-        for(int j = ptr+1; j< nums.length ; j++ ){
-            if(nums[j] != 0){
+
+        for (int j = ptr + 1; j < nums.length; j++) {
+            if (nums[j] != 0) {
                 int temp = nums[j];
                 nums[j] = nums[ptr];
                 nums[ptr] = temp;
-        ptr++;
+                ptr++;
             }
         }
         return nums;
 
+    }
+
+    static boolean containsDuplicate() {
+        int[] nums = { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 };
+
+        Map<Integer, Integer> mp = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (mp.containsKey(nums[i])) {
+                mp.put(nums[i], mp.getOrDefault(nums[i], 0) + 1);
+                return true;
+            } else {
+                mp.put(nums[i], 1);
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -416,11 +434,9 @@ public class Main {
         // leftRotateByOne();
         // leftRotateByD();
         // rotateZeros();
-       int[] result = ApplyOperationstoArray();
+        // int[] result = ApplyOperationstoArray();
 
-       for (int i = 0; i < result.length; i++) {
-        System.out.print(result[i]+ " ");
-        
-       }
+        boolean result = containsDuplicate();
+        System.out.println(result);
     }
 }
