@@ -373,6 +373,39 @@ public class Main {
 
     }
 
+    static int[] ApplyOperationstoArray() {
+        // int[] nums = { 0, 1, 0, 3, 12 };
+        int[] nums = { 1, 2, 2, 1, 1, 0 };
+
+         for(int i = 0; i< nums.length-1 ; i++ ){
+            if(nums[i] == nums[i+1]){
+                int temp = nums[i+1];
+                nums[i+1] = 0;
+                nums[i] = temp * 2;
+            }
+        }
+
+        int ptr = 0;
+
+        while(ptr < nums.length){
+            if(nums[ptr] == 0){
+                break;
+            }
+                ptr++;
+        }
+        
+        for(int j = ptr+1; j< nums.length ; j++ ){
+            if(nums[j] != 0){
+                int temp = nums[j];
+                nums[j] = nums[ptr];
+                nums[ptr] = temp;
+        ptr++;
+            }
+        }
+        return nums;
+
+    }
+
     public static void main(String[] args) {
         // largestElementInAnArray();
         // secondLargestElementInAnArray();
@@ -382,6 +415,12 @@ public class Main {
         // rotateArray();
         // leftRotateByOne();
         // leftRotateByD();
-        rotateZeros();
+        // rotateZeros();
+       int[] result = ApplyOperationstoArray();
+
+       for (int i = 0; i < result.length; i++) {
+        System.out.print(result[i]+ " ");
+        
+       }
     }
 }
