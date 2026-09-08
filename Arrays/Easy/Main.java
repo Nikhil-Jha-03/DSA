@@ -424,6 +424,48 @@ public class Main {
         return false;
     }
 
+    boolean checkStringPalindromeUsingTwoPointer125(String text) {
+
+        // boolean checkStringPalindromeWithAscii(String text) {
+        // String newText = "";
+        // for (int i = 0; i < text.length(); i++) {
+        // if ((int) text.charAt(i) >= (int) 'A' && (int) text.charAt(i) <= (int) 'z') {
+        // newText = newText + text.charAt(i);
+        // }
+        // }
+        // newText = newText.toLowerCase();
+        // for (int j = 0; j < newText.length(); j++) {
+        // if (newText.charAt(j) != newText.charAt(newText.length() - j - 1)) {
+        // return false;
+        // }
+        // }
+        // return true;
+        // }
+
+        int left = 0;
+        int right = text.length() - 1;
+
+        while (left < right) {
+            char curentLeftChar = text.charAt(left);
+            char curentRightChar = text.charAt(right);
+            if (!Character.isLetterOrDigit(curentLeftChar)) {
+                left++;
+            } else if (!Character.isLetterOrDigit(curentRightChar)) {
+                right--;
+            } else {
+                if (Character.toLowerCase(curentLeftChar) != Character.toLowerCase(curentRightChar)) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+        }
+
+        return true;
+    }
+
+
+
     public static void main(String[] args) {
         // largestElementInAnArray();
         // secondLargestElementInAnArray();
@@ -435,6 +477,8 @@ public class Main {
         // leftRotateByD();
         // rotateZeros();
         // int[] result = ApplyOperationstoArray();
+        // boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a
+        // canal: Panama");
 
         boolean result = containsDuplicate();
         System.out.println(result);

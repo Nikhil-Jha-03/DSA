@@ -153,46 +153,6 @@ public class Main {
         // string.length() - (2*i) -1 or something work
     }
 
-    boolean checkStringPalindromeUsingTwoPointer125(String text) {
-
-        // boolean checkStringPalindromeWithAscii(String text) {
-        // String newText = "";
-        // for (int i = 0; i < text.length(); i++) {
-        // if ((int) text.charAt(i) >= (int) 'A' && (int) text.charAt(i) <= (int) 'z') {
-        // newText = newText + text.charAt(i);
-        // }
-        // }
-        // newText = newText.toLowerCase();
-        // for (int j = 0; j < newText.length(); j++) {
-        // if (newText.charAt(j) != newText.charAt(newText.length() - j - 1)) {
-        // return false;
-        // }
-        // }
-        // return true;
-        // }
-
-        int left = 0;
-        int right = text.length() - 1;
-
-        while (left < right) {
-            char curentLeftChar = text.charAt(left);
-            char curentRightChar = text.charAt(right);
-            if (!Character.isLetterOrDigit(curentLeftChar)) {
-                left++;
-            } else if (!Character.isLetterOrDigit(curentRightChar)) {
-                right--;
-            } else {
-                if (Character.toLowerCase(curentLeftChar) != Character.toLowerCase(curentRightChar)) {
-                    return false;
-                }
-                left++;
-                right--;
-            }
-        }
-
-        return true;
-    }
-
     int fibonacciSeriesTillNTermRecursive(int num) {
 
         if (num <= 1) {
@@ -244,8 +204,6 @@ public class Main {
         // String result = mn.stringPalindrome("madam");
         // boolean result = mn.stringPalindrome(0, "madam");
 
-        // boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a
-        // canal: Panama");
         // int result = mn.fibonacciSeriesTillNTermRecursive(15);
         int result = mn.fibonacciSeriesTillNTermLoop(5);
 
