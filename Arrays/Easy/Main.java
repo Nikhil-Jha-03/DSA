@@ -3,6 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
 
@@ -480,7 +481,34 @@ public class Main {
         // boolean result = mn.checkStringPalindromeUsingTwoPointer125("A man, a plan, a
         // canal: Panama");
 
-        boolean result = containsDuplicate();
-        System.out.println(result);
+        // boolean result = containsDuplicate();
+
+        Map<Character,Integer> mp = new HashMap<>();
+
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine().trim();
+
+
+        for(int i =0;i<str.length();i++){
+            if(mp.containsKey(str.charAt(i))){
+                mp.put(str.charAt(i), mp.getOrDefault(str.charAt(i), 0) + 1);
+            } else{
+                 mp.put(str.charAt(i), 1);
+            }
+        }
+
+        String res = "";
+
+        for (Map.Entry<Character,Integer> m : mp.entrySet()) {
+            res += m.getKey() + "";
+            res +=  m.getValue() > 1 ? m.getValue() : "" ;
+        }
+
+        System.out.println(res);
+
+        sc.close();
+        
+
+        // System.out.println(result);
     }
 }
